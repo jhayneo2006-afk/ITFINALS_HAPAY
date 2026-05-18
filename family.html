@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#1a1a2e"/>
+  <title>My Family</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <span class="nav-brand">JFD Hapay</span>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="about.html">About Me Today</a>
+      <a href="family.html" class="active">My Family</a>
+      <a href="achievements.html">My Achievements</a>
+      <a href="hobbies.html">My Hobbies</a>
+    </div>
+  </nav>
+  <script>
+    (function(){
+      var btn=document.getElementById('navToggle');
+      var menu=document.getElementById('navLinks');
+      function setOpen(open){
+        menu.classList.toggle('open',open);
+        btn.classList.toggle('is-open',open);
+        btn.setAttribute('aria-expanded',open);
+      }
+      btn.addEventListener('click',function(){
+        setOpen(!menu.classList.contains('open'));
+      });
+      var links=menu.querySelectorAll('a');
+      links.forEach(function(a){
+        a.addEventListener('click',function(){
+          setOpen(false);
+        });
+      });
+    })();
+  </script>
+
+
+  <div class="page-title">
+    <h1>My Family</h1>
+    <p>The people who matter most to me</p>
+  </div>
+
+  <div class="container">
+    <div class="card" style="text-align:center;">
+      <div style="display:flex;gap:12px;justify-content:center;align-items:flex-start;flex-wrap:nowrap;margin-bottom:15px;">
+        <img src="photos/family.jpg" alt="Family Photo 1"
+          onerror="this.onerror=null;this.src='https://placehold.co/180x280/16213e/fff?text=Family+Photo+1'"
+          style="width:35%;max-width:220px;height:250px;object-fit:cover;border-radius:10px;"/>
+        <img src="photos/family2.jpg" alt="Family Photo 2"
+          onerror="this.onerror=null;this.src='https://placehold.co/500x380/0f3460/fff?text=Family+Photo+2'"
+          style="width:60%;max-width:500px;height:250px;object-fit:cover;border-radius:10px;"/>
+      </div>
+      <p>My family is my greatest source of strength and inspiration. Everything I do, I do for them.</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <span class="badge">Father</span>
+        <h2>Francisco Hapay Jr.</h2>
+        <img src="photos/father.jpg" alt="Father"
+          onerror="this.onerror=null;this.src='https://placehold.co/120x120/0f3460/fff?text=Dad'"
+          style="width:120px;height:120px;border-radius:50%;object-fit:cover;margin:10px 0;"/>
+        <p>My father works as an Area Coordinator at Island Paints. He is resilient, adaptive, and selfless — always putting others' needs before his own. I admire him deeply for these qualities, as they remind me every day what it means to be strong and caring at the same time.</p>
+      </div>
+      <div class="card">
+        <span class="badge">Mother</span>
+        <h2>Jenifer Hapay</h2>
+        <img src="photos/mother.jpg" alt="Mother"
+          onerror="this.onerror=null;this.src='https://placehold.co/120x120/e94560/fff?text=Mom'"
+          style="width:120px;height:120px;border-radius:50%;object-fit:cover;margin:10px 0;"/>
+        <p>My mother works as a Dental Assistant. She is kind and intellectual — someone who carries herself with grace and warmth. What I admire most about her is her sense of style; she has a natural elegance that inspires me to carry myself with the same confidence.</p>
+      </div>
+      <div class="card">
+        <span class="badge">Sibling</span>
+        <h2>Jhaynoa Francies D. Hapay</h2>
+        <img src="photos/sibling.jpg" alt="Sibling 1"
+          onerror="this.onerror=null;this.src='https://placehold.co/120x120/1a1a2e/fff?text=Sibling+1'"
+          style="width:120px;height:120px;border-radius:50%;object-fit:cover;margin:10px 0;"/>
+        <p>Jhaynoa is my 18-year-old brother. Growing up together, we've built a bond rooted in trust and understanding. He is someone I can always count on, and I'm proud to see the young man he is becoming.</p>
+      </div>
+      <div class="card">
+        <span class="badge">Sibling</span>
+        <h2>Jhaynica Franchine D. Hapay</h2>
+        <img src="photos/sibling2.jpg" alt="Sibling 2"
+          onerror="this.onerror=null;this.src='https://placehold.co/120x120/1a1a2e/fff?text=Sibling+2'"
+          style="width:120px;height:120px;border-radius:50%;object-fit:cover;margin:10px 0;"/>
+        <p>Jhaynica is my 15-year-old sister. She brings so much energy and joy into our home. As her older sibling, I cherish our bond and look forward to watching her grow and discover her own path.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>What My Family Means to Me</h2>
+      <p>My family has shaped me into the person I am today. Their love, sacrifices, and constant support have been my greatest motivation in everything I pursue. Through every challenge and milestone, they have always been my safe place — the reason I keep going and the people I am most grateful for. No achievement means more without them to share it with.</p>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Jhayneo Francoise D. Hapay | GEMST 03 Final Requirement</p>
+  </footer>
+
+</body>
+</html>

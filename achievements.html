@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#1a1a2e"/>
+  <title>My Achievements</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <span class="nav-brand">JFD Hapay</span>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="about.html">About Me Today</a>
+      <a href="family.html">My Family</a>
+      <a href="achievements.html" class="active">My Achievements</a>
+      <a href="hobbies.html">My Hobbies</a>
+    </div>
+  </nav>
+  <script>
+    (function(){
+      var btn=document.getElementById('navToggle');
+      var menu=document.getElementById('navLinks');
+      function setOpen(open){
+        menu.classList.toggle('open',open);
+        btn.classList.toggle('is-open',open);
+        btn.setAttribute('aria-expanded',open);
+      }
+      btn.addEventListener('click',function(){
+        setOpen(!menu.classList.contains('open'));
+      });
+      var links=menu.querySelectorAll('a');
+      links.forEach(function(a){
+        a.addEventListener('click',function(){
+          setOpen(false);
+        });
+      });
+    })();
+  </script>
+
+
+  <div class="page-title">
+    <h1>My Achievements</h1>
+    <p>Milestones I'm proud of</p>
+  </div>
+
+  <div class="container">
+    <div class="grid">
+      <div class="card">
+        <span class="badge">Academic</span>
+        <h2>Consistent Honor Student</h2>
+        <p>Maintained honor status from Grade 7 through Grade 12 — a testament to years of dedication, hard work, and academic excellence throughout junior and senior high school.</p>
+      </div>
+      <div class="card">
+        <span class="badge">Research</span>
+        <h2>🏆 Best Capstone Research</h2>
+        <p>Awarded Best Capstone Research at the school level in 2024 for the study <em>"Exploring the Potential of Gumamela (Hibiscus rosa-sinensis) as Anthocyanin-based pH Indicator."</em> This research explored a natural, low-cost alternative to synthetic pH indicators using locally available flowers.</p>
+      </div>
+      <div class="card">
+        <span class="badge">Competition</span>
+        <h2>🏸 Badminton Tournament Wins</h2>
+        <p>Won several badminton tournaments in school/local events. These wins taught me discipline, focus under pressure, and how to keep improving my skills through consistent practice.</p>
+      </div>
+
+    </div>
+
+    <div class="card">
+      <h2>What These Mean to Me</h2>
+      <p>These achievements reflect my dedication and willingness to learn. From maintaining honor status throughout high school to earning Best Capstone Research, each milestone pushed me to go beyond what was expected. They remind me that hard work, curiosity, and consistency always pay off.</p>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Jhayneo Francoise D. Hapay | GEMST 03 Final Requirement</p>
+  </footer>
+
+</body>
+</html>
+

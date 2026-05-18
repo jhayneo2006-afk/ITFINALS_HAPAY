@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#1a1a2e"/>
+  <title>Home – My Personal Website</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <span class="nav-brand">JFD Hapay</span>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html" class="active">Home</a>
+      <a href="about.html">About Me Today</a>
+      <a href="family.html">My Family</a>
+      <a href="achievements.html">My Achievements</a>
+      <a href="hobbies.html">My Hobbies</a>
+    </div>
+  </nav>
+  <script>
+    (function(){
+      var btn=document.getElementById('navToggle');
+      var menu=document.getElementById('navLinks');
+      function setOpen(open){
+        menu.classList.toggle('open',open);
+        btn.classList.toggle('is-open',open);
+        btn.setAttribute('aria-expanded',open);
+      }
+      btn.addEventListener('click',function(){
+        setOpen(!menu.classList.contains('open'));
+      });
+      var links=menu.querySelectorAll('a');
+      links.forEach(function(a){
+        a.addEventListener('click',function(){
+          setOpen(false);
+        });
+      });
+    })();
+  </script>
+
+  <div class="hero">
+    <img src="photos/profile.jpg" alt="Profile Photo"
+      onerror="this.onerror=null;this.src='https://placehold.co/150x150/e94560/fff?text=Me'"
+      style="width:150px;height:150px;border-radius:50%;object-fit:cover;border:4px solid #e94560;"/>
+    <h1>Hello, I'm <span style="color:#e94560;">Jhayneo Francoise D. Hapay</span> 👋</h1>
+    <p>BS Computer Engineering Student</p>
+  </div>
+
+  <div class="container">
+    <div class="card">
+      <h2>Welcome to My Website</h2>
+      <p>This is my personal website created as a final requirement for GEMST 03. Here you'll find everything about who I am — my background, my family, my achievements, and the things I love to do.</p>
+    </div>
+    <div class="card">
+      <h2>Quick Highlights</h2>
+      <ul>
+        <li>📚 Currently studying BS Computer Engineering</li>
+        <li>👨‍👩‍👧 Close to my family and values relationships</li>
+        <li>🏆 Proud of my academic and personal achievements</li>
+        <li>🎮 Passionate about technology and creative hobbies</li>
+      </ul>
+    </div>
+    <div class="card" style="text-align:center;">
+      <p>Explore the pages above to learn more about me!</p>
+      <br/>
+      <a href="about.html" style="background:#e94560;color:#fff;padding:10px 25px;border-radius:25px;text-decoration:none;font-weight:bold;">Get to Know Me →</a>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Jhayneo Francoise D. Hapay | GEMST 03 Final Requirement</p>
+  </footer>
+
+</body>
+</html>

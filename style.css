@@ -1,0 +1,467 @@
+/* =============================================
+   BASE RESET & ROOT VARIABLES
+   ============================================= */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent; /* removes blue flash on Android tap */
+}
+
+:root {
+  --accent:   #e94560;
+  --dark:     #1a1a2e;
+  --mid:      #16213e;
+  --deep:     #0f3460;
+  --bg:       #f0f4f8;
+  --text:     #333;
+  --muted:    #555;
+  --white:    #fff;
+  --radius:   12px;
+  --shadow:   0 4px 15px rgba(0,0,0,0.08);
+
+  /* fluid type scale — readable on every screen */
+  --fs-xs:    0.8rem;
+  --fs-sm:    0.9rem;
+  --fs-base:  1rem;
+  --fs-md:    1.1rem;
+  --fs-lg:    1.3rem;
+  --fs-xl:    1.6rem;
+  --fs-2xl:   2rem;
+  --fs-3xl:   2.4rem;
+}
+
+/* =============================================
+   BODY
+   ============================================= */
+html {
+  scroll-behavior: smooth;
+  /* prevent horizontal overflow on Android */
+  overflow-x: hidden;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+  /* improve text rendering on Android */
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* =============================================
+   NAVIGATION
+   ============================================= */
+nav {
+  background: var(--dark);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+/* Desktop nav row */
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  min-height: 56px;
+}
+
+/* Brand / logo area (optional) */
+.nav-brand {
+  color: var(--white);
+  font-weight: 700;
+  font-size: var(--fs-base);
+  white-space: nowrap;
+}
+
+/* Hamburger button — hidden on desktop */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  /* 44×44 minimum touch target */
+  min-width: 44px;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: #e0e0e0;
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+/* Animate hamburger → X when open */
+.nav-toggle.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-toggle.is-open span:nth-child(2) { opacity: 0; }
+.nav-toggle.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* Link list */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+nav a {
+  color: #e0e0e0;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 25px;
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  transition: background 0.25s, color 0.25s;
+  /* 44px minimum touch target height */
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+nav a:hover,
+nav a.active {
+  background: var(--accent);
+  color: var(--white);
+}
+
+/* =============================================
+   HERO SECTION
+   ============================================= */
+.hero {
+  text-align: center;
+  padding: 70px 20px 55px;
+  background: linear-gradient(135deg, var(--dark), var(--mid), var(--deep));
+  color: var(--white);
+  animation: fadeDown 0.8s ease;
+}
+
+.hero img {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--accent);
+  margin-bottom: 20px;
+  animation: popIn 0.6s ease;
+  /* prevent layout shift while image loads */
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero h1 {
+  font-size: var(--fs-3xl);
+  margin-bottom: 10px;
+  line-height: 1.2;
+}
+
+.hero p {
+  font-size: var(--fs-md);
+  color: #ccc;
+}
+
+/* =============================================
+   CONTAINER & CARDS
+   ============================================= */
+.container {
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 0 20px;
+  animation: fadeUp 0.7s ease;
+}
+
+.card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  margin-bottom: 24px;
+  box-shadow: var(--shadow);
+  transition: transform 0.3s;
+}
+
+/* touch/pen devices: avoid hover animations/zoom and stuck states */
+@media (hover: none) {
+  .card:hover { transform: none; }
+}
+
+/* pointer devices that support hover: enable hover lift */
+@media (hover: hover) {
+  .card:hover { transform: translateY(-4px); }
+}
+
+
+.card h2 {
+  color: var(--deep);
+  margin-bottom: 12px;
+  font-size: var(--fs-lg);
+}
+
+.card p,
+.card li {
+  line-height: 1.8;
+  color: var(--muted);
+  font-size: var(--fs-base);
+}
+
+.card ul {
+  padding-left: 20px;
+}
+
+/* CTA button inside cards */
+.card a[style] {
+  /* override inline styles with better touch target */
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 12px 28px !important;
+  border-radius: 25px;
+  font-size: var(--fs-base) !important;
+}
+
+/* =============================================
+   PAGE TITLE (inner pages)
+   ============================================= */
+.page-title {
+  text-align: center;
+  padding: 50px 20px 16px;
+  background: linear-gradient(135deg, var(--dark), var(--deep));
+  color: var(--white);
+  animation: fadeDown 0.8s ease;
+}
+
+.page-title h1 {
+  font-size: var(--fs-2xl);
+  line-height: 1.2;
+}
+
+.page-title p {
+  color: #aaa;
+  margin-top: 8px;
+  font-size: var(--fs-base);
+}
+
+/* =============================================
+   GRID
+   ============================================= */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+/* =============================================
+   BADGE
+   ============================================= */
+.badge {
+  display: inline-block;
+  background: var(--accent);
+  color: var(--white);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: var(--fs-xs);
+  margin-bottom: 10px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+/* =============================================
+   FOOTER
+   ============================================= */
+footer {
+  text-align: center;
+  padding: 28px 20px;
+  background: var(--dark);
+  color: #888;
+  font-size: var(--fs-xs);
+  margin-top: 60px;
+  line-height: 1.6;
+}
+
+/* =============================================
+   IMAGES — prevent overflow on small screens
+   ============================================= */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* =============================================
+   ANDROID / MOBILE BREAKPOINT  ≤ 600px
+   ============================================= */
+@media (max-width: 600px) {
+
+  /* --- NAV --- */
+  .nav-inner {
+    padding: 0 16px;
+    min-height: 52px;
+  }
+
+  .nav-toggle {
+    display: flex; /* show hamburger */
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    padding: 8px 0 14px;
+    gap: 2px;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  nav a {
+    width: 100%;
+    padding: 13px 16px;
+    border-radius: 8px;
+    font-size: var(--fs-base);
+    min-height: 48px; /* larger touch target on mobile */
+  }
+
+  /* --- HERO --- */
+  .hero {
+    padding: 44px 16px 36px;
+  }
+
+  .hero img {
+    width: 110px;
+    height: 110px;
+  }
+
+  .hero h1 {
+    font-size: var(--fs-xl);   /* 1.6rem — readable, not cramped */
+  }
+
+  .hero p {
+    font-size: var(--fs-base);
+  }
+
+  /* --- CONTAINER & CARDS --- */
+  .container {
+    margin: 28px auto;
+    padding: 0 14px;
+  }
+
+  .card {
+    padding: 18px 16px;
+    border-radius: 10px;
+  }
+
+  .card h2 {
+    font-size: var(--fs-md);
+  }
+
+  /* flex cards (about page photo+text) → stack */
+  .card[style*="display:flex"] {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 16px !important;
+  }
+
+  .card[style*="display:flex"] img {
+    width: 100% !important;
+    max-width: 280px !important;
+    height: 220px !important;
+    border-radius: 10px !important;
+  }
+
+  /* --- INLINE FLEX WRAPPERS (family photos row) --- */
+  .card > div[style*="flex-wrap:nowrap"] {
+    flex-wrap: wrap !important;
+    gap: 12px !important;
+  }
+
+  .card > div[style*="flex-wrap:nowrap"] img {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 200px !important;
+    border-radius: 10px !important;
+  }
+
+  /* --- PAGE TITLE --- */
+  .page-title {
+    padding: 36px 16px 14px;
+  }
+
+  .page-title h1 {
+    font-size: var(--fs-xl);
+  }
+
+  /* --- GRID → single column --- */
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  /* --- FAMILY PHOTOS (side-by-side → stacked) --- */
+  div[style*="flex-wrap:nowrap"] {
+    flex-wrap: wrap !important;
+    gap: 12px !important;
+  }
+
+  div[style*="flex-wrap:nowrap"] img {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 200px !important;
+    border-radius: 10px !important;
+  }
+
+  /* --- FOOTER --- */
+  footer {
+    margin-top: 40px;
+    padding: 22px 16px;
+    font-size: 0.78rem;
+  }
+}
+
+/* =============================================
+   TABLET  601px – 900px  (bonus polish)
+   ============================================= */
+@media (min-width: 601px) and (max-width: 900px) {
+  .hero h1   { font-size: 2rem; }
+  .container { padding: 0 24px; }
+  .grid      { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* =============================================
+   ANIMATIONS
+   ============================================= */
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.75); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

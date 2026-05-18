@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#1a1a2e"/>
+  <title>My Hobbies</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <span class="nav-brand">JFD Hapay</span>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="about.html">About Me Today</a>
+      <a href="family.html">My Family</a>
+      <a href="achievements.html">My Achievements</a>
+      <a href="hobbies.html" class="active">My Hobbies</a>
+    </div>
+  </nav>
+  <script>
+    (function(){
+      var btn=document.getElementById('navToggle');
+      var menu=document.getElementById('navLinks');
+      function setOpen(open){
+        menu.classList.toggle('open',open);
+        btn.classList.toggle('is-open',open);
+        btn.setAttribute('aria-expanded',open);
+      }
+      btn.addEventListener('click',function(){
+        setOpen(!menu.classList.contains('open'));
+      });
+      var links=menu.querySelectorAll('a');
+      links.forEach(function(a){
+        a.addEventListener('click',function(){
+          setOpen(false);
+        });
+      });
+    })();
+  </script>
+
+
+  <div class="page-title">
+    <h1>My Hobbies</h1>
+    <p>Things I love to do</p>
+  </div>
+
+  <div class="container">
+    <div class="grid">
+      <div class="card">
+        <h2>🎸 Guitar</h2>
+        <p>I play the guitar to relax and express my creativity. I’ve been practicing for a few years, and I enjoy learning new chords, improving my finger techniques, and playing along with the songs I like.</p>
+      </div>
+      <div class="card">
+        <h2>🏸 Badminton</h2>
+        <p>Badminton is my husband's favorite sport, and over time it became a shared hobby for us. We enjoy playing together on weekends — it keeps us active, competitive, and connected. It's a great way to bond while staying fit.</p>
+      </div>
+      <div class="card">
+        <h2>📖 Reading Books</h2>
+        <p>I love getting lost in a good book. Whether it's fiction, self-help, or inspirational stories, reading helps me expand my perspective and unwind after a long day. It's a quiet hobby that feeds my curiosity and imagination.</p>
+      </div>
+      <div class="card">
+        <h2>🎶 Listening to Old Music</h2>
+        <p>There's something timeless about classic songs — they carry memories and emotions that modern music sometimes can't match. I enjoy listening to old OPM and classic hits that remind me of simpler, meaningful moments in life.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Why Hobbies Matter to Me</h2>
+      <p>Hobbies help me stay motivated and balanced. Whether it's strumming the guitar, rallying on the badminton court with my husband, getting lost in a book, or letting old music take me back in time — each hobby gives me a way to recharge, connect, and appreciate the little joys in life.</p>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Jhayneo Francoise D. Hapay | GEMST 03 Final Requirement</p>
+  </footer>
+
+</body>
+</html>
+

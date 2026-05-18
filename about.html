@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#1a1a2e"/>
+  <title>About Me Today</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <span class="nav-brand">JFD Hapay</span>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="about.html" class="active">About Me Today</a>
+      <a href="family.html">My Family</a>
+      <a href="achievements.html">My Achievements</a>
+      <a href="hobbies.html">My Hobbies</a>
+    </div>
+  </nav>
+  <script>
+    (function(){
+      var btn=document.getElementById('navToggle');
+      var menu=document.getElementById('navLinks');
+      function setOpen(open){
+        menu.classList.toggle('open',open);
+        btn.classList.toggle('is-open',open);
+        btn.setAttribute('aria-expanded',open);
+      }
+      btn.addEventListener('click',function(){
+        setOpen(!menu.classList.contains('open'));
+      });
+      // close menu after tapping a link (Android UX)
+      var links=menu.querySelectorAll('a');
+      links.forEach(function(a){
+        a.addEventListener('click',function(){
+          setOpen(false);
+        });
+      });
+    })();
+  </script>
+
+  <div class="page-title">
+    <h1>About Me Today</h1>
+    <p>Who I am right now</p>
+  </div>
+
+  <div class="container">
+    <div class="card" style="display:flex;gap:25px;align-items:center;flex-wrap:wrap;">
+      <img src="photos/about.jpg" alt="About Me"
+        onerror="this.onerror=null;this.src='https://placehold.co/160x160/0f3460/fff?text=Photo'"
+        style="width:160px;height:160px;border-radius:12px;object-fit:cover;flex-shrink:0;"/>
+      <div>
+        <span class="badge">About Me</span>
+        <h2>Jhayneo Francoise D. Hapay</h2>
+        <p>I am a 2nd year BS Computer Engineering student with a passion for technology, problem-solving, and continuous learning. I strive to grow both academically and personally every day.</p>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Personal Info</h2>
+        <ul>
+          <li><strong>Age:</strong> 19</li>
+          <li><strong>Birthday:</strong> August 29, 2006</li>
+          <li><strong>Hometown:</strong> Makilala, North Cotabato</li>
+          <li><strong>Nationality:</strong> Filipino</li>
+          <li><strong>Religion:</strong> Roman Catholic</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2>Education</h2>
+        <ul>
+          <li><strong>College:</strong> University of Southern Mindanao</li>
+          <li><strong>Course:</strong> BS Computer Engineering</li>
+          <li><strong>Year Level:</strong> 2nd Year</li>
+          <li><strong>Senior High:</strong> Makilala National High School</li>
+          <li><strong>Junior High:</strong> Rock Valley Christian College</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>My Goals</h2>
+      <p>I aim to achieve peace in my life, let go of all unnecessary earthly desires, and fully heal the child within me who was once deprived of love.</p>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Jhayneo Francoise D. Hapay | GEMST 03 Final Requirement</p>
+  </footer>
+
+</body>
+</html>
